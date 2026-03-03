@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Google Maps Data Extractor",
+  "version": "1.0",
+  "description": "Extract data from Google Maps",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://*.google.com/maps/*",
+    "https://maps.google.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Extract Maps Data"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.google.com/maps/*",
+        "https://maps.google.com/*"
+      ],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
